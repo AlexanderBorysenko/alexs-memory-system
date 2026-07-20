@@ -79,6 +79,17 @@ Suite-wide convention: when a skill step's output is a TYPED ARTIFACT, the step 
 
 Track the gates visibly: one todo per pending artifact when a skill runs multi-step. Skipping a gate requires saying so in chat with a reason (mirrors the Authority ladder rung 2).
 
+## Code comments — sparse, never ticket-referenced
+
+Suite-wide convention for ANY code the agent writes or edits (user projects and plugin source alike):
+
+1. **Comment only what the code cannot say**: a non-obvious constraint, invariant, or gotcha the next reader needs. Never narrate what the next line does, never restate the change being made, never explain why the edit is correct — that is reviewer-talk, and it is noise the moment the change lands.
+2. **NEVER embed ticket/case/finding identifiers in code comments** — no `FN-1234`, JIRA keys, bug-detective case slugs, observer finding ids, or "fixed per <ticket>" provenance. Provenance lives in commit messages, case files, and journals; `git blame` already links every line to its ticket. A ticket id in a comment is redundant by construction.
+3. **Density matches the surrounding file.** New code in a sparsely commented file stays sparse; do not out-comment the codebase you are editing.
+4. **Protocol-owned tags are exempt**: `ponytail:` ceiling comments and project-executor `EXEC-TRACE` instrumentation (registered and stripped by its own protocol) are deliberate machine-tracked markers, not commentary.
+
+**Failure mode this section prevents (2026-07-20, user report):** bug-fix code arrived spammed with comments, most carrying the originating ticket name — double noise: over-commenting drowned the signal, and every ticket reference duplicated what the commit message already recorded.
+
 ## Model tiering — mechanical work on small models, reasoning on the session model
 
 Suite-wide convention. Every subagent runs on the LEAST capable model that does its job correctly; the session (main-thread) model is reserved for orchestration and reasoning. Three tiers:
