@@ -84,11 +84,12 @@ Track the gates visibly: one todo per pending artifact when a skill runs multi-s
 Suite-wide convention for ANY code the agent writes or edits (user projects and plugin source alike):
 
 1. **Comment only what the code cannot say**: a non-obvious constraint, invariant, or gotcha the next reader needs. Never narrate what the next line does, never restate the change being made, never explain why the edit is correct — that is reviewer-talk, and it is noise the moment the change lands.
-2. **NEVER embed ticket/case/finding identifiers in code comments** — no `FN-1234`, JIRA keys, bug-detective case slugs, observer finding ids, or "fixed per <ticket>" provenance. Provenance lives in commit messages, case files, and journals; `git blame` already links every line to its ticket. A ticket id in a comment is redundant by construction.
-3. **Density matches the surrounding file.** New code in a sparsely commented file stays sparse; do not out-comment the codebase you are editing.
-4. **Protocol-owned tags are exempt**: `ponytail:` ceiling comments and project-executor `EXEC-TRACE` instrumentation (registered and stripped by its own protocol) are deliberate machine-tracked markers, not commentary.
+2. **Comments describe the CURRENT state of the program, never its history.** "Decision made: …", "migrated from X", "changed this here", "was previously Y", "now uses Z instead of…" — all of it is chat/session content transcribed into the file, and it is garbage: the reader has no "before" to compare against. The test for every comment: *does it explain the code as it stands, to someone who never saw the old version or this conversation?* If not — delete it. History belongs to git, journals, and case files.
+3. **NEVER embed ticket/case/finding identifiers in code comments** — no `FN-1234`, JIRA keys, bug-detective case slugs, observer finding ids, or "fixed per <ticket>" provenance. Provenance lives in commit messages, case files, and journals; `git blame` already links every line to its ticket. A ticket id in a comment is redundant by construction.
+4. **Density matches the surrounding file.** New code in a sparsely commented file stays sparse; do not out-comment the codebase you are editing.
+5. **Protocol-owned tags are exempt**: `ponytail:` ceiling comments and project-executor `EXEC-TRACE` instrumentation (registered and stripped by its own protocol) are deliberate machine-tracked markers, not commentary.
 
-**Failure mode this section prevents (2026-07-20, user report):** bug-fix code arrived spammed with comments, most carrying the originating ticket name — double noise: over-commenting drowned the signal, and every ticket reference duplicated what the commit message already recorded.
+**Failure mode this section prevents (2026-07-20, user report):** bug-fix code arrived spammed with comments, most carrying the originating ticket name — double noise: over-commenting drowned the signal, and every ticket reference duplicated what the commit message already recorded. Same session also flagged history-narration comments ("decision taken…", "migrated from…", "what changed here") — chat content transcribed into files instead of describing the current program.
 
 ## Model tiering — mechanical work on small models, reasoning on the session model
 
