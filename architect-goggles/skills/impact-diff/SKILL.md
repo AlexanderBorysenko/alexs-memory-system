@@ -21,8 +21,10 @@ Adds `diffs[]`, `flow_diffs[]` and `advisory` to an existing map. Obey `spec/age
 5. **Hotspot advisory**: if a touched node's tangle_score / metrics indicate a mess
    (high fan_in×fan_out, many unrelated flows, cycles, high change_coupling, black boxes clustering),
    recommend untangling BEFORE the fix, with a concrete refactoring diff as an alternative path.
-6. Save the map file in place (refresh picks it up); tell the user to flip the diff toggle
-   (map: green/yellow nodes; sequence: ghost arrows for removed steps).
+6. Save the map file in place (refresh picks it up); ensure the viewer is running (start
+   `viewer/serve.mjs` if not) and give the human the full
+   `http://localhost:<port>/?path=<url-encoded absolute map path>` link; tell the user to flip
+   the diff toggle (map: green/yellow nodes; sequence: ghost arrows for removed steps).
 
 ## Hard rules
 - Metrics stay deterministic; advisory is where interpretation lives.

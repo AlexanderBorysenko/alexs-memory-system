@@ -38,7 +38,9 @@ Artifact gate (orchestrator index-rules): the deliverable is a LINTED map + view
 7. **STOP at the perimeter gate**: present the map summary + black-box list
    with evidence; the human routes each. Agentic fallback: contract §5.
 8. After routing, update resolutions/evidence, re-lint, save the map file (the viewer reads it
-   live by `?path=` — refresh picks it up).
+   live by `?path=` — refresh picks it up). Ensure the viewer is running (start `viewer/serve.mjs`
+   if not; distinct port per goggle) and give the human the full
+   `http://localhost:<port>/?path=<url-encoded absolute map path>` link — never just the file path.
 
 ## Rules
 - No node without resolution; no suspected/dismissed without evidence.

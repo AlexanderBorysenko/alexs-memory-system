@@ -30,6 +30,9 @@ Stack balance applies to the projection too.
 4. Map each arrow to its structural `edge` id — this is what synchronizes MAP and SEQUENCE.
 5. Update `nodes[].metrics.flows_count`.
 6. Save the map file in place; the viewer reads it live, so a browser refresh picks up the new version.
+   Ensure the viewer is actually running (start `viewer/serve.mjs` if not; distinct port per goggle)
+   and give the human the full `http://localhost:<port>/?path=<url-encoded absolute map path>` link —
+   never just the file path.
 
 ## Sanity checks before finishing
 - Stack simulation over each flow balances (unbalanced = you didn't actually trace it).

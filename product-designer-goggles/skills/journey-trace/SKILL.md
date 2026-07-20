@@ -29,6 +29,8 @@ Extends an existing PJM map's `flows[]`. Obey `spec/agent-contract.md`
 6. Screenshots: leave unset, or `pending` for steps the present skill should
    capture (frontend steps worth showing).
 7. Lint, fix, save the map file in place (the viewer reads it live — refresh picks it up).
+   Ensure the viewer is running (start `viewer/serve.mjs` if not; distinct port per goggle) and
+   give the human the full `http://localhost:<port>/?path=<url-encoded absolute map path>` link.
 
 ## Rules
 - Every step's screen must be a screen node (lint enforces).
