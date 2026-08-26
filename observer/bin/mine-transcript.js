@@ -65,7 +65,7 @@ function clip(s) {
 // \b is ASCII-only in JS: Cyrillic alternatives behind it never matched.
 // Explicit non-letter boundaries + /u flag make them live.
 const CORRECTION_RE =
-  /(^|[^\p{L}])(no|not|wrong|stop|don'?t|do not|actually|instead|revert|undo|ні|нет|не так|стоп|зупинись|неправильно|невірно|скасуй|отмени|наоборот|навпаки)([^\p{L}]|$)/iu;
+  /(^|[^\p{L}])(no|not|wrong|stop|don'?t|do not|actually|instead|revert|undo|ні|нет|стоп|зупинись|неправильно|невірно|скасуй|отмени|наоборот|навпаки|прибери|поприбирай|спрости|простіше|чистіше|не\s+\p{L}+)([^\p{L}]|$)/iu;
 
 function analyze(files) {
   const errors = []; // {tool, snippet, retried}
@@ -163,7 +163,7 @@ out.push('');
 out.push(`## Permission denials (${r.denials.length})`);
 for (const d of cap(r.denials)) out.push(`- ${d}`);
 out.push('');
-out.push(`## User corrections (heuristic, ${r.corrections.length})`);
+out.push(`## User corrections (heuristic, ${r.corrections.length} — under-detects; 0 is not proof of none)`);
 for (const c of cap(r.corrections)) out.push(`- "${c}"`);
 out.push('');
 out.push('## Plugin usage');
