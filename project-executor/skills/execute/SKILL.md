@@ -5,9 +5,11 @@ description: Execute real actions on the local project using durable execution m
 
 # execute
 
-Router + flows for real local execution. Contracts (in this plugin, read the ones
-the flow needs): `spec/memory-contract.md`, `spec/evidence-contract.md`,
-`spec/instrumentation-contract.md`, `spec/report-contract.md`.
+Router + flows for real local execution. Contracts live at
+`${CLAUDE_PLUGIN_ROOT}/spec/` (NOT under this skill's directory); read the ones
+the flow needs: `memory-contract.md`, `evidence-contract.md`,
+`instrumentation-contract.md`, `report-contract.md`. Later bare `spec/…`
+mentions in this file resolve against that same plugin-root path.
 Artifact gate (orchestrator index-rules): a run's claims are complete only with the
 written evidence report — chat assertions without the evidence bundle do not count.
 
