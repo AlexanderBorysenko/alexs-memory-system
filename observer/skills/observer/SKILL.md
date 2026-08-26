@@ -56,9 +56,16 @@ valid, expected outcome. Never invent patches to look productive.
 
 - Apply approved diffs. If a target file changed since the diff was drafted,
   re-read, re-derive, re-show if materially different.
+- Canonical repo is `~/Documents/claude-plugins`. Patch there — never in
+  `~/.claude/plugins/marketplaces/*` or `~/.claude/plugins/cache/*`, which are
+  the read-only copies a session actually loads.
 - Commit to main (repo policy) — message: `observer: <plugin> — <finding slug>`.
 - Behavioral change → bump the plugin's patch version in its `plugin.json` AND
   `.claude-plugin/marketplace.json`.
+- Propagate, then VERIFY before logging the finding as patched: the marketplace
+  clone must contain the commit, and the patched line must be present in the
+  file the session loads. A patch living only in the canonical repo is inert —
+  log it `pending-propagation`, never `yes`.
 - Close with: "reinstall/reactivate `<plugin>` for the change to take effect".
 
 ## 5. RECORD
