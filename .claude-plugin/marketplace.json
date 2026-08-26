@@ -18,7 +18,7 @@
     {
       "name": "orchestrator",
       "source": "./orchestrator",
-      "version": "0.2.1",
+      "version": "0.3.2",
       "description": "Bundle orchestrator: injects a generated routing table of all installed alex-makoto plugins plus hand-authored when-to-use, handoff, and precedence rules into every session, so Claude picks and chains the right plugin without being told."
     },
     {
@@ -30,19 +30,19 @@
     {
       "name": "architect-goggles",
       "source": "./architect-goggles",
-      "version": "0.7.0",
+      "version": "0.7.1",
       "description": "Architect Goggles: a visual surface for looking at a codebase — agent-generated, task-scoped architecture maps (PCE) with structural and behavioral projections, black-box perimeter tracking, change review as diagram diffs, and a local viewer."
     },
     {
       "name": "product-designer-goggles",
       "source": "./product-designer-goggles",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "description": "Product maps (PJM): capability view + journey playback with screenshots, product impact diffs, HTML deck export."
     },
     {
       "name": "researcher",
       "source": "./researcher",
-      "version": "0.6.2",
+      "version": "0.6.3",
       "description": "Deterministic research orchestration: complexity triage (L1/L2/L3), tool routing over Graphify/Serena/context-mode/web, anti-hallucination grounding, citable research memory."
     },
     {
@@ -54,7 +54,7 @@
     {
       "name": "observer",
       "source": "./observer",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "description": "Self-improvement loop for the plugin suite: audits sessions (transcript digest + journals/registries/git) against what the plugins prescribe, proposes user-gated unified-diff patches to plugin source in this repo, commits approved ones, and tracks finding recurrence."
     },
     {

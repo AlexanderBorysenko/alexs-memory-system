@@ -58,15 +58,24 @@ valid, expected outcome. Never invent patches to look productive.
   re-read, re-derive, re-show if materially different.
 - Canonical repo is `~/Documents/claude-plugins`. Patch there — never in
   `~/.claude/plugins/marketplaces/*` or `~/.claude/plugins/cache/*`, which are
-  the read-only copies a session actually loads.
-- Commit to main (repo policy) — message: `observer: <plugin> — <finding slug>`.
-- Behavioral change → bump the plugin's patch version in its `plugin.json` AND
-  `.claude-plugin/marketplace.json`.
-- Propagate, then VERIFY before logging the finding as patched: the marketplace
-  clone must contain the commit, and the patched line must be present in the
-  file the session loads. A patch living only in the canonical repo is inert —
-  log it `pending-propagation`, never `yes`.
-- Close with: "reinstall/reactivate `<plugin>` for the change to take effect".
+  read-only copies.
+- Behavioral change → `node scripts/plugins.mjs bump <plugin> patch`. A version
+  lives in `<plugin>/.claude-plugin/plugin.json` and is mirrored into
+  `.claude-plugin/marketplace.json` and into dependents' ranges; the script is
+  what keeps the three in step. Never hand-edit a version — the mirror drifts
+  silently and only `plugin.json` decides what gets installed.
+- Ship with `node scripts/plugins.mjs release "observer: <plugin> — <slug>"`. It
+  re-checks the version invariants, validates the manifests, commits, pushes,
+  refreshes the marketplace and runs `claude plugin update` for every installed
+  plugin. `claude plugin update` is non-interactive — `/plugin` is not needed.
+- VERIFY before logging a finding as patched: the version under
+  `~/.claude/plugins/installed_plugins.json` must equal `plugin.json`, and the
+  patched line must be present beneath that entry's `installPath`. That copy —
+  not the repo, not the marketplace clone — is what a session loads. Anything
+  short of it is `pending-propagation`, never `yes`.
+- `node scripts/plugins.mjs check` answers "is everything consistent right now";
+  run it whenever a rule seems not to be firing, before concluding it was ignored.
+- Close with: "restart Claude Code — updated plugins apply from the next session".
 
 ## 5. RECORD
 
