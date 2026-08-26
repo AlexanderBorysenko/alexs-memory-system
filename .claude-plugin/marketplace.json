@@ -54,13 +54,13 @@
     {
       "name": "observer",
       "source": "./observer",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "description": "Self-improvement loop for the plugin suite: audits sessions (transcript digest + journals/registries/git) against what the plugins prescribe, proposes user-gated unified-diff patches to plugin source in this repo, commits approved ones, and tracks finding recurrence."
     },
     {
       "name": "project-executor",
       "source": "./project-executor",
-      "version": "0.5.1",
+      "version": "0.5.3",
       "description": "Execution memory + real local execution: lifecycle, tests, browser flows, instrumented bug repro, evidence-backed reports."
     }
   ]

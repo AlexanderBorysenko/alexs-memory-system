@@ -62,8 +62,10 @@ function clip(s) {
 
 // ---- parse ----------------------------------------------------------------
 
+// \b is ASCII-only in JS: Cyrillic alternatives behind it never matched.
+// Explicit non-letter boundaries + /u flag make them live.
 const CORRECTION_RE =
-  /\b(no|not|wrong|stop|don'?t|do not|actually|instead|revert|undo|нет|не so|не так|стоп|неправильно|отмени|наоборот)\b/i;
+  /(^|[^\p{L}])(no|not|wrong|stop|don'?t|do not|actually|instead|revert|undo|ні|нет|не так|стоп|зупинись|неправильно|невірно|скасуй|отмени|наоборот|навпаки)([^\p{L}]|$)/iu;
 
 function analyze(files) {
   const errors = []; // {tool, snippet, retried}
