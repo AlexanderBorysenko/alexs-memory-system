@@ -31,7 +31,13 @@ logs, screenshots in ONE batched AskUserQuestion. The SAME batch MUST include th
 product-intent pair: (1) what behavior is EXPECTED here, and (2) why is the current
 behavior considered wrong — and by whom (user observation, product owner, or guess).
 A symptom is only a delta against an expectation; without the expectation on record
-the investigation has no target. Hold the symptom text and answers in
+the investigation has no target.
+**Non-interactive harness** (system says the user cannot answer mid-task): intake is
+still NOT skipped. Write the product-intent pair as explicit ASSUMPTIONS in the first
+reply and carry them into the verdict; re-ask the same questions as plain text. Any
+later user statement of expected behaviour is an intake answer — if it contradicts an
+assumption, return to HYPOTHESIZE before proposing fixes.
+Hold the symptom text and answers in
 working memory — do not open the case file yet, triage first. Transcribe them into the
 case file only if/when TRIAGE below opens one.
 
