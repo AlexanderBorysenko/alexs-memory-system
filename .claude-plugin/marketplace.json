@@ -42,7 +42,7 @@
     {
       "name": "researcher",
       "source": "./researcher",
-      "version": "0.6.3",
+      "version": "0.6.4",
       "description": "Deterministic research orchestration: complexity triage (L1/L2/L3), tool routing over Graphify/Serena/context-mode/web, anti-hallucination grounding, citable research memory."
     },
     {

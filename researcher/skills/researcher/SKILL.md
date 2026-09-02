@@ -44,6 +44,7 @@ Run `node ${CLAUDE_PLUGIN_ROOT}/bin/freshness.js` (or reuse the SessionStart sta
 - `serena: not onboarded` → activate the project (`mcp__plugin_serena_serena__activate_project`) and run onboarding (free).
 - `graphify: missing` (no copy source) → STOP. State: "graphify graph missing; /research needs it. Options: (1) run `graphify index .` — paid, ask cost; (2) waive for this question and I proceed on serena+web only." Do NOT continue Step 1 until the user picks.
 - `serena: missing` (MCP server not installed) → STOP. State: "serena MCP unavailable; /research needs it for L2/L3. Ask user to enable serena MCP OR waive and I proceed on graphify+web only."
+- `serena: ready` at SessionStart but the MCP server reports a connect failure/timeout this session → NOT `missing`, do not block. Proceed on graphify + context-mode grep for the code level, name the outage in the closing tool line (e.g. `serena unavailable (connect timeout)`), and tell the user once so they can retry the MCP.
 
 **Memory:**
 
